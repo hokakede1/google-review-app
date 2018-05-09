@@ -17,7 +17,8 @@
     "react-test-render": "^1.1.1",
     "redux": "^4.0.0",
     "semantic-ui-css": "^2.3.1",
-    "semantic-ui-react": "^0.79.1"
+    "semantic-ui-react": "^0.79.1",
+    "sinon": "^5.0.7"
   },
   "scripts": {
     "start": "react-scripts start",
