@@ -10,14 +10,21 @@
 
 
 ## To start the App
+--
 #Step 1: open server
+--
 #Step 2: create your config.js
+--
 #Step 3: run `npm install` in server/ directory.
+--
 #Step 4: In the terminal, run `node index.js` in server/ directory.
 --
 #Step 4: open client
+--
 #Step 5: run `npm install` in client/ directory.
+--
 #Step 6: In the terminal, run `npm start` in client/ directory.
+--
 #Step 7: run `npm run test` to run tests for this app
 
 
