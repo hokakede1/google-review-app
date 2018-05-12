@@ -10,16 +10,10 @@ const app = express();
 massive(config.connectionString)
 	.then(db => {
 		app.set('db', db);
-		// db.initTables.initTables()
-		// .then( response => {
-		//   console.log('User table init'); })
-
 		console.log('connected to the DB');
 	})
 	.catch(err => console.log(`[DB ERROR]`, err));
 
-// App setup
-// app.use(morgan('combined'));
 app.use(bodyParser.json({ type: '*/*' }));
 // const router = require('./router')(app);
 
