@@ -1,16 +1,17 @@
 const bcrypt = require('bcrypt-nodejs');
 
 exports.bcryptHarshing = password => {
-	bcrypt.genSalt(10, function(err, salt) {
-		if (err) {
-			return { err };
-		}
-
-		bcrypt.hash(user.password, salt, null, function(err, hash) {
+	return new Promise((resolve, reject) => {
+		bcrypt.genSalt(10, function(err, salt) {
 			if (err) {
-				return { err };
+				reject({ err });
 			}
-			return hash;
+			bcrypt.hash(password, salt, null, function(err, hash) {
+				if (err) {
+					reject({ err });
+				}
+				resolve(hash);
+			});
 		});
 	});
 };

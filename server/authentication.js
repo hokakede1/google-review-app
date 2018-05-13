@@ -1,4 +1,3 @@
-const User = require('./models/user');
 const jwt = require('jwt-simple');
 const config = require('./config');
 const { bcryptHarshing } = require('./helpers/authenticationHelpers');
@@ -9,7 +8,8 @@ function tokenForUser(user) {
 }
 
 exports.signup = async (req, res, next) => {
-	const { email, password, firstName, lastName, profilePic } = req.body;
+	const { email, firstName, lastName, profilePic, location } = req.body;
+	let { password } = req.body;
 	const db = req.app.get('db');
 
 	// See if the user have an email exist
@@ -21,7 +21,7 @@ exports.signup = async (req, res, next) => {
 		if (responseFromUserEmailQuery.length !== 0) {
 			return res.status(422).send({ error: 'Email is in use' });
 		} else {
-			password = bcryptHarshing(password);
+			password = await bcryptHarshing(password);
 			if (password.err) {
 				return res.status(500).send({ error: 'Something went wrong when creating passwords' });
 			}
@@ -30,9 +30,10 @@ exports.signup = async (req, res, next) => {
 				password,
 				firstName,
 				lastName,
-				profilePic
+				profilePic,
+				location
 			]);
-			return res.status(200).send({ token: tokenForUser(req.user) });
+			return res.status(200).send({ token: tokenForUser(resultAfterCreateAnUser[0]) });
 		}
 	} catch (err) {
 		console.log('[ERR]', err);
