@@ -8,8 +8,7 @@ function tokenForUser(user) {
 }
 
 exports.signup = async (req, res, next) => {
-	const { email, firstName, lastName, profilePic, location } = req.body;
-	let { password } = req.body;
+	const { email, firstName, lastName, profilePic, location, password } = req.body;
 	const db = req.app.get('db');
 
 	// See if the user have an email exist
@@ -21,13 +20,13 @@ exports.signup = async (req, res, next) => {
 		if (responseFromUserEmailQuery.length !== 0) {
 			return res.status(422).send({ error: 'Email is in use' });
 		} else {
-			password = await bcryptHarshing(password);
-			if (password.err) {
+			const hashedPassword = await bcryptHarshing(password);
+			if (hashedPassword.err) {
 				return res.status(500).send({ error: 'Something went wrong when creating passwords' });
 			}
-			const resultAfterCreateAnUser = await db.create_new_user([
+			const resultAfterCreateAnUser = await db.user_create_new_user([
 				email,
-				password,
+				hashedPassword,
 				firstName,
 				lastName,
 				profilePic,

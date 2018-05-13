@@ -19,7 +19,6 @@ const styles = {
       height: '300px',
     },
   },
-
 };
 class LoginPage extends Component {
   constructor() {
@@ -38,5 +37,5 @@ class LoginPage extends Component {
     );
   }
 }
-// LoginPage = Radium(LoginPage)
+
 export default Radium(LoginPage);

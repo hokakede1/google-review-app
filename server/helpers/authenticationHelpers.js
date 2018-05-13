@@ -15,3 +15,11 @@ exports.bcryptHarshing = password => {
 		});
 	});
 };
+
+exports.comparePassword = async (userPassword, candidatePassword, callback) => {
+		await bcrypt.compare(candidatePassword, userPassword, function(err, isMatch){
+			if (err) { return callback(err)};
+			return callback(null, isMatch);
+		})
+	
+}
