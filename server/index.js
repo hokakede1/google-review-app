@@ -18,7 +18,7 @@ app.use(bodyParser.json({ type: '*/*' }));
 // const router = require('./router')(app);
 
 // Server Setup
-const port = process.env.PORT || 8080;
+const port = 8080;
 const server = http.createServer(app);
 server.listen(port, () => {
 	console.log('server is running on port ' + port);
