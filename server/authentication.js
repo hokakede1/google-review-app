@@ -41,5 +41,5 @@ exports.signup = async (req, res, next) => {
 };
 
 exports.signin = (req, res, next) => {
-	res.send({ token: tokenForUser(req.user) });
+	res.status(200).send({ token: tokenForUser(req.user) });
 };
