@@ -72,6 +72,9 @@ const styles = {
     marginLeft: "12px",
     marginBottom: "15px"
   },
+  keepSignedInCheckbox: {
+
+  },
   underlineStyle: {
     height: "2px",
     color: "#717595",
@@ -160,7 +163,7 @@ class LoginPage extends Component {
             <input type="text" style={styles.loginInput} />
           </div>
           <div style={styles.keepSignedInContainer}>
-            <input type="checkbox" />
+            <input type="checkbox" style={{marginRight: "5px"}}/>
             <h3>Keep me Signed in</h3>
           </div>
           <button style={styles.loginButton}>SIGN IN</button>
