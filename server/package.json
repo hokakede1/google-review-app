@@ -12,6 +12,7 @@
     "jest": "^22.4.3",
     "jwt-simple": "^0.5.1",
     "massive": "^4.8.0",
+    "moment": "^2.22.1",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
@@ -26,7 +27,7 @@
     "mocha": "^5.1.1"
   },
   "jest": {
-    "collectCoverageFrom":[
+    "collectCoverageFrom": [
       "helpers/**/*.js",
       "*.js",
       "!index.js",
