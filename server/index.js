@@ -21,6 +21,8 @@ massive(config.connectionString)
 
 app.use(bodyParser.json({ type: '*/*' }));
 app.use(cors());
+
+//IMPORT IN ALL THE ROUTES
 const router = require('./router')(app);
 
 //Authentication Setup

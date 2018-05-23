@@ -1,10 +1,17 @@
 const jwt = require('jwt-simple');
 const config = require('./config');
-const { bcryptHarshing } = require('./helpers/authenticationHelpers');
+const { bcryptHarshing } = require('./AuthenticationUtils/authenticationHelpers');
 
 function tokenForUser(user) {
 	const timestamp = new Date().getTime();
-	return jwt.encode({ sub: user.user_id, iat: timestamp }, config.secret);
+	return jwt.encode(
+		{
+			sub: user.user_id,
+			iat: moment().unix(),
+			exp: moment().add(5, 'hours').unix()
+		},
+		config.secret
+	);
 }
 
 exports.signup = async (req, res, next) => {
